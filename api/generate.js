@@ -1,5 +1,3 @@
-// /api/generate.js
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Kun POST tilladt' });
@@ -38,6 +36,7 @@ export default async function handler(req, res) {
 
 function formatInput(input) {
   return Object.entries(input)
-    .map(([key, val]) => `• ${key}:\n${val}`)
+    .map(([key, val]) => `• ${key}:
+${val}`)
     .join('\n\n');
 }
