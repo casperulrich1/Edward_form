@@ -1,1 +1,137 @@
-<!-- Din formular her -->
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edward Formular</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      font-size: 26px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid orange;
+      width: 0;
+      animation: typing 2s steps(30, end) forwards;
+    }
+    .typed-done {
+      border: none !important;
+    }
+    .question {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section {
+      display: none;
+      margin-bottom: 2rem;
+    }
+    section.active {
+      display: block;
+    }
+    textarea, #generatedPlan {
+      font-size: 22px;
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    textarea {
+      height: 80px;
+    }
+    .nav-buttons {
+      margin-top: 1rem;
+      display: none;
+    }
+    .nav-buttons.show {
+      display: block;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+    #generatedPlan {
+      display: none;
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <form id="edwardForm">
+    <section class="active">
+      <h2>Idé & Koncept</h2>
+      <div class="question"><textarea name="ide" placeholder="Din forretningsidé"></textarea></div>
+      <div class="question"><textarea name="vision" placeholder="Din vision"></textarea></div>
+      <div class="question"><textarea name="unik" placeholder="Hvad gør din idé unik?"></textarea></div>
+      <div class="question"><textarea name="produkter" placeholder="Produkter eller services"></textarea></div>
+    </section>
+    <section>
+      <h2>Kunder & Marked</h2>
+      <div class="question"><textarea name="kunder" placeholder="Typiske kunder"></textarea></div>
+      <div class="question"><textarea name="behov" placeholder="Behov eller problemer"></textarea></div>
+      <div class="question"><textarea name="marked" placeholder="Marked, konkurrence, tendenser"></textarea></div>
+      <div class="question"><textarea name="konkurrenter" placeholder="Største konkurrenter"></textarea></div>
+    </section>
+    <section>
+      <h2>Indtjening & Drift</h2>
+      <div class="question"><textarea name="indtjening" placeholder="Hvordan vil du tjene penge?"></textarea></div>
+      <div class="question"><textarea name="priser" placeholder="Prisstruktur"></textarea></div>
+      <div class="question"><textarea name="omkostninger" placeholder="Vigtigste omkostninger"></textarea></div>
+      <div class="question"><textarea name="aktiviteter" placeholder="Nødvendige aktiviteter"></textarea></div>
+    </section>
+    <section>
+      <h2>Markedsføring & Udbredelse</h2>
+      <div class="question"><textarea name="førsteKunder" placeholder="Første kunder"></textarea></div>
+      <div class="question"><textarea name="kanaler" placeholder="Markedsføringskanaler"></textarea></div>
+      <div class="question"><textarea name="budskab" placeholder="Centrale budskab"></textarea></div>
+      <div class="question"><textarea name="partnere" placeholder="Partnere og netværk"></textarea></div>
+    </section>
+    <section>
+      <h2>Budget & Finansiering</h2>
+      <div class="question"><textarea name="kapital" placeholder="Opstartskapital"></textarea></div>
+      <div class="question"><textarea name="finansiering" placeholder="Finansieringsplan"></textarea></div>
+      <div class="question"><textarea name="udgifter" placeholder="Faste og variable udgifter"></textarea></div>
+      <div class="question"><textarea name="overskud" placeholder="Hvornår overskud?"></textarea></div>
+    </section>
+    <section>
+      <h2>Team & Kompetencer</h2>
+      <div class="question"><textarea name="team" placeholder="Hvem står bag?"></textarea></div>
+      <div class="question"><textarea name="erfaring" placeholder="Erfaring"></textarea></div>
+      <div class="question"><textarea name="roller" placeholder="Roller og kompetencer"></textarea></div>
+    </section>
+    <section>
+      <h2>Milepæle & Planer</h2>
+      <div class="question"><textarea name="milepæle" placeholder="Opnåede milepæle"></textarea></div>
+      <div class="question"><textarea name="næsteSkridt" placeholder="Næste skridt"></textarea></div>
+      <div class="question"><textarea name="risici" placeholder="Risici og håndtering"></textarea></div>
+      <div class="question"><textarea name="mål" placeholder="Mål for første år"></textarea></div>
+    </section>
+    <div class="nav-buttons" id="navButtons">
+      <button type="button" id="prevBtn">Tilbage</button>
+      <button type="button" id="nextBtn">Næste</button>
+      <button type="submit" id="submitBtn" style="display:none">Gennemgå Forretningsplan</button>
+    </div>
+  </form>
+
+  <div style="margin-top:2rem;">
+    <button id="generateBtn" style="display:none">Generér forretningsplan</button>
+    <button id="downloadBtn" style="display:none">Download PDF</button>
+    <div contenteditable="true" id="generatedPlan"></div>
+  </div>
+
+  <!-- Script indsættes ved deploy med AI-kald og PDF-gen -->
+</body>
+</html>
