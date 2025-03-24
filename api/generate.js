@@ -1,3 +1,5 @@
+// /api/generate.js
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Kun POST tilladt' });
@@ -17,11 +19,11 @@ export default async function handler(req, res) {
         messages: [
           {
             role: 'system',
-            content: 'Du er en startup-rådgiver. Du hjælper med at skrive klare og overbevisende forretningsplaner baseret på input fra iværksættere.'
+            content: 'Du er en startup-rådgiver. Du hjælper med at skrive klare og professionelle forretningsplaner baseret på brugerens input.'
           },
           {
             role: 'user',
-            content: generatePromptFromInput(input)
+            content: formatInput(input)
           }
         ]
       })
@@ -34,14 +36,8 @@ export default async function handler(req, res) {
   }
 }
 
-function generatePromptFromInput(input) {
-  let output = 'Her er mine svar til forretningsplanen:\n\n';
-  for (const [key, value] of Object.entries(input)) {
-    output += `• ${capitalize(key)}:\n${value}\n\n`;
-  }
-  return output;
-}
-
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1).replace(/([A-Z])/g, ' $1');
+function formatInput(input) {
+  return Object.entries(input)
+    .map(([key, val]) => `• ${key}:\n${val}`)
+    .join('\n\n');
 }
